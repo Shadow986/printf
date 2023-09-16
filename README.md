@@ -1,7 +1,7 @@
 # printf function
 improved printf function
 
-# Write_func
+# write_func
 
 This code defines two functions,  `_putchar`  and  `_puts` .
 
