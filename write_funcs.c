@@ -21,7 +21,7 @@ int _putchar(char c)
 		buf[i] = c;
 		i++;
 	}
-	return (1);
+		return (1);
 }
 /**
  * _puts - prints str to stdout
@@ -34,5 +34,5 @@ int _puts(char *str)
 
 	for (i = 0; str[i] != '\0'; i++)
 		_putchar(str[i]);
-	return (i);
+		return (i);
 }
