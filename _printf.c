@@ -1,71 +1,48 @@
 #include "main.h"
+#include <limits.h>
+#include <stdio.h>
 /**
- * _printf - is a function that formats and prints data
- * @format: format of data
- * Return: number of characters printed
+ * _printf - This function generates output based on a specified format.
+ * @format: The format string that includes characters and specifiers
+ * Description: This function calls  get_print()  to determine the appropriate
+ * printing function based on the conversion specifiers in the format string
+ * Return: The function returns the length of the formatted output string
  */
 int _printf(const char *format, ...)
 {
+	int (*pfunc)(va_list, flags_t *);
 	const char *p;
-	unsigned int i;
-	int j;
-	int k = 0;
-	va_list conspec;
-	char *s;
+	va_list arguments;
+	flags_t flags = {0, 0, 0};
 
-	if (!format)
-	{
+	register int count = 0;
+
+	va_start(arguments, format);
+	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
-	}
-	va_start(conspec, format);
-	for (p = format; *p != '\0'; p++)
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
+	for (p = format; *p; p++)
 	{
-		if (*p != '%')
+		if (*p == '%')
 		{
-			_putchar(*p, &k);
-			continue;
-		}
-		p++;
-		switch (*p)
-		{
-		case 'c':
-			i = va_arg(conspec, int);
-			_putchar(i, &k);
-			break;
-		case 's':
-			s = va_arg(conspec, char *);
-			_puts(s, &k);
-			break;
-		case '%':
-			_putchar('%', &k);
-			break;
-		case 'd':
-			j = va_arg(conspec, int);
-			_print_number(j, &k);
-			break;
-		case 'i':
-			j = va_arg(conspec, int);
-			_print_number(j, &k);
-			break;
-		case 'r':
-			s = va_arg(conspec, char *);
-			_rev_string(s, &k);
-			break;
-		case 'b':
-			i = va_arg(conspec, int);
-			_print_binary(i, &k);
-			break;
-		case 'R':
-			s = va_arg(conspec, char *);
-			_rot13(s, &k);
-			break;
-		case '\0':
-			return (-1);
-		default:
-			_putchar('%', &k);
-			_putchar(*p, &k);
-		}
+			p++;
+			if (*p == '%')
+			{
+				count += _putchar('%');
+				continue;
+			}
+			while (get_flag(*p, &flags))
+				p++;
+			pfunc = get_print(*p);
+			count += (pfunc)
+				? pfunc(arguments, &flags)
+				: _printf("%%%c", *p);
+		} else
+			count += _putchar(*p);
 	}
-	va_end(conspec);
-	return (k);
+	_putchar(-1);
+	va_end(arguments);
+	return (count);
+
 }
