@@ -1,4 +1,4 @@
-# printf_proto-type
+# printf function
 improved printf function
 
 # Write_func
