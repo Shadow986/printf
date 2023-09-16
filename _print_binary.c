@@ -23,6 +23,6 @@ void _print_binary(int n, int *k)
 	while (i >= 0)
 	{
 		_putchar(a[i], k);
-		i--;
+			i--;
 	}
 }

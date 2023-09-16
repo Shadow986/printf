@@ -15,7 +15,7 @@ void _puts(char *str, int *k)
 		_putchar('l', k);
 		_putchar('l', k);
 		_putchar(')', k);
-		return;
+			return;
 	}
 	while (*str)
 	{
