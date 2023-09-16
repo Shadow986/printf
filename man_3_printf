@@ -1,0 +1,42 @@
+.TH _printf 3 "16 Sep 2023" "version 1.0"
+
+.SH NAME
+_printf - Prints to stdout!
+
+.SH SYNOPSIS
+#include "main.h"
+.PP
+#include <stdarg.h>
+.PP
+int printf(const char *format, ...);
+
+.SH DESCRIPTION
+The function _printf() produces output according to a format as described below. It writes output to stdout, the standard output stream. All output is written under the control of a format string. This specifies how subsequent arguments are converted for output. It also specifies how arguments accessed via stdarg facilities are converted for output.
+
+.SH Return value
+Upon successful return, this function returns the number of characters printed (excluding the null byte used to end output to strings).
+
+.SH Format of the format string
+The format string is a character string composed of zero or more directives. Ordinary characters (except %) are copied unchanged to output. %[character] is a conversion specifier, the argument of which will be fetched.
+
+.SH Conversion specifiers
+.B b
+The int argument is converted to signed binary notation and written.
+
+.B c
+The int argument is converted to an unsigned char and written.
+
+.B d
+The int argument is converted to signed decimal notation and written.
+
+.B i
+The int argument is converted to signed decimal notation and written.
+
+.B r
+The char* argument, a pointer to an array of characters, is reversed and written.
+
+.B R
+The char* argument, a pointer to an array of characters, is encoded using the ROT13 cipher and written.
+
+.B s
+The char* argument, a pointer to an array of characters, is written.
