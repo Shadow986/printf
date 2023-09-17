@@ -2,69 +2,57 @@
 #include "main.h"
 
 /**
- * struct flags_s - Struct to hold formatting flags
- * @l_modifier: Flag for the 'l' length modifier
- * @h_modifier: Flag for the 'h' length modifier
- * @format: Format string
- */
-typedef struct flags_s
-{
-	int l_modifier;
-	int h_modifier;
-	const char *format;
-} flags_t;
-
-/**
- * print_int - Print an integer.
+ * print_int - a function that prints an integer.
  * @l: va_list parameter (unused)
  * @f: Pointer to flags_t structure (unused)
  * Return: Length of printed characters or -1 on error
  */
-int print_int(va_list l _attribute_((unused)), flags_t *f _attribute_((unused)))
+int print_int(va_list l, flags_t *f)
 {
 	return (0);
 }
 
 /**
- * print_uint - Print an unsigned integer.
+ * print_uint - a function that prints an unsigned integer.
  * @l: va_list parameter (unused)
  * @f: Pointer to flags_t structure (unused)
  * Return: Length of printed characters or -1 on error
  */
-int print_uint(va_list l _attribute_((unused)), flags_t *f _attribute_((unused)))
+int print_uint(va_list l, flags_t *f)
 {
 	return (0);
 }
 
 /**
- * print_octal - Print a number in octal format.
+ * print_octal - a function that prints a number in octal format.
  * @l: va_list parameter (unused)
  * @f: Pointer to flags_t structure (unused)
  * Return: Length of printed characters or -1 on error
  */
-int print_octal(va_list l _attribute_((unused)), flags_t *f _attribute_((unused)))
+int print_octal(va_list l, flags_t *f)
 {
 	return (0);
 }
 
 /**
- * print_hex - Print a number in hexadecimal format.
+ * print_hex - a function that prints a number in hexadecimal format.
  * @l: va_list parameter (unused)
  * @f: Pointer to flags_t structure (unused)
  * Return: Length of printed characters or -1 on error
  */
-int print_hex(va_list l _attribute_((unused)), flags_t *f _attribute_((unused)))
+int print_hex(va_list l, flags_t *f)
 {
 	return (0);
 }
 
 /**
- * handle_length_modifiers - Handle length modifiers for non-custom conversion specifiers.
+ * handle_length_modifiers - a function that handles length
+ * modifiers for non-custom conversion specifiers.
  * @l: va_list parameter (unused)
  * @f: Pointer to flags_t structure
  * Return: Length of printed characters or -1 on error
  */
-int handle_length_modifiers(va_list l _attribute_((unused)), flags_t *f)
+int handle_length_modifiers(va_list l, flags_t *f)
 {
 	char c = *(f->format);
 	int length = 0;
@@ -80,7 +68,7 @@ int handle_length_modifiers(va_list l _attribute_((unused)), flags_t *f)
 		default:
 			return (-1);
 	}
-       	f->format++;
+	f->format++;
 	c = *(f->format);
 	switch (c)
 	{
