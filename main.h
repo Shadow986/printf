@@ -13,6 +13,9 @@
  */
 typedef struct flags
 {
+	const char *format;
+	int l_modifier;
+	int h_modifier;
 	int plus;
 	int space;
 	int hash;
@@ -72,5 +75,12 @@ int print_address(va_list l, flags_t *f);
 
 /* print_percent */
 int print_percent(va_list l, flags_t *f);
+
+/* Function prototypes */
+int print_int(va_list l, flags_t *f);
+int print_uint(va_list l, flags_t *f);
+int print_octal(va_list l, flags_t *f);
+int print_hex(va_list l, flags_t *f);
+int handle_length_modifiers(va_list l, flags_t *f);
 
 #endif
