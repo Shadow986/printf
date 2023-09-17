@@ -2,7 +2,7 @@
 /**
  * print_int - prints an int
  * @l: va_list of args from _printf
- * @f: pointer to the struct flags
+ * @f: ptr to the struct flags
  * Return: num of char
  */
 int print_int(va_list l, flags_t *f)
