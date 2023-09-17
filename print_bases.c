@@ -2,7 +2,7 @@
 /**
  * print_hex - number in hex base,in lowercase
  * @l: va_list args from _printf
- * @f: pointer to the struct flags
+ * @f: ptr to the struct flags
  * Description: The function invokes the  `convert()`  function, which in turn converts the input number to the appropriate base and returns it as a string.
  * Return: num of char
  */
