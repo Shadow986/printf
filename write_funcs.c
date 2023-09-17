@@ -25,7 +25,7 @@ int _putchar(char c)
 }
 /**
  * _puts - prints str to stdout
- * @str: pointer to the str
+ * @str: ptr to the str
  * Return: num of chars
  */
 int _puts(char *str)
