@@ -2,7 +2,7 @@
 /**
  * print_address - This function prints the hexadecimal format of the input address.
  * @l: va_list args from _printf
- * @f: pointer to the struct flags
+ * @f: ptr to the struct flags
  * Return: num of char
  */
 int print_address(va_list l, flags_t *f)
