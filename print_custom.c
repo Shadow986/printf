@@ -4,8 +4,7 @@
  * (0 < ASCII value < 32 or >= 127) are
  * prints: \x, then ASCII code value in hex
  * @l: va_list arguments from _printf
- * @f: pointer to the struct flags that determines
- * if a flag is passed to _printf
+ * @f: pointer to the struct flags
  * Return: number of char printed
  */
 int print_bigS(va_list l, flags_t *f)
@@ -60,7 +59,7 @@ int print_rev(va_list l, flags_t *f)
 /**
  * print_rot13 - prints a str using rot13
  * @l: list of args from _printf
- * @f: pointer to the struct flags
+ * @f: ptr to the struct flags
  * Return: strlen
  */
 int print_rot13(va_list l, flags_t *f)
