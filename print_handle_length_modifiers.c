@@ -24,8 +24,8 @@ int handle_length_modifiers(va_list l, flags_t *f)
 		default:
 			return (-1);
 	}
-	f->format++;
-	c = *(f->format);
+	f->fo++;
+	c = *(f->fo);
 	switch (c)
 	{
 		case 'd':
