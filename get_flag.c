@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * get_flag - The function activates flags if  `_printf`
  * encounters a flag modifier in the format str.
