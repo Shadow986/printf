@@ -2,50 +2,6 @@
 #include "main.h"
 
 /**
- * print_int - a function that prints an integer.
- * @l: va_list parameter (unused)
- * @f: Pointer to flags_t structure (unused)
- * Return: Length of printed characters or -1 on error
- */
-int print_int(va_list l, flags_t *f)
-{
-	return (0);
-}
-
-/**
- * print_uint - a function that prints an unsigned integer.
- * @l: va_list parameter (unused)
- * @f: Pointer to flags_t structure (unused)
- * Return: Length of printed characters or -1 on error
- */
-int print_uint(va_list l, flags_t *f)
-{
-	return (0);
-}
-
-/**
- * print_octal - a function that prints a number in octal format.
- * @l: va_list parameter (unused)
- * @f: Pointer to flags_t structure (unused)
- * Return: Length of printed characters or -1 on error
- */
-int print_octal(va_list l, flags_t *f)
-{
-	return (0);
-}
-
-/**
- * print_hex - a function that prints a number in hexadecimal format.
- * @l: va_list parameter (unused)
- * @f: Pointer to flags_t structure (unused)
- * Return: Length of printed characters or -1 on error
- */
-int print_hex(va_list l, flags_t *f)
-{
-	return (0);
-}
-
-/**
  * handle_length_modifiers - a function that handles length
  * modifiers for non-custom conversion specifiers.
  * @l: va_list parameter (unused)
