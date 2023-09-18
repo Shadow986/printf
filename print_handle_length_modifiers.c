@@ -121,3 +121,47 @@ int main(void)
 	printf("Print integer: %d\n", num);
 	return (0);
 }
+
+/**
+ * handle_field_width - a function that handles the field
+ * width for non-custom conversion specifiers
+ * @format: The format string
+ * @i: The index of the conversion specifier
+ * @args: The va_list of arguments
+ * Return: The number of characters printed
+ */
+int handle_field_width(va_list l, flags_t *f)
+{
+	int width = 0;
+	int num_chars = 0;
+
+	if (format[i] == '*')
+	{
+		width = va_arg(args, int);
+		i++;
+	}
+	else
+	{
+		while (format[i] >= '0' && format[i] <= '9')
+		{
+			width = (width * 10) + (format[i] - '0');
+			i++;
+		}
+	}
+	switch (format[i])
+	{
+		case 'd':
+		case 'i':
+		case 'u':
+		case 'o':
+		case 'x':
+		case 'X':
+			num_chars += handle_integer(format[i], width, args);
+			break;
+		default:
+			num_chars += _putchar('%');
+			num_chars += _putchar(format[i]);
+			break;
+	}
+	return (num_chars);
+}
