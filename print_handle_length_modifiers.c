@@ -135,20 +135,20 @@ int handle_field_width(va_list l, flags_t *f)
 	int width = 0;
 	int num_chars = 0;
 
-	if (format[i] == '*')
+	if (fo[i] == '*')
 	{
 		width = va_arg(args, int);
 		i++;
 	}
 	else
 	{
-		while (format[i] >= '0' && format[i] <= '9')
+		while (fo[i] >= '0' && fo[i] <= '9')
 		{
-			width = (width * 10) + (format[i] - '0');
+			width = (width * 10) + (fo[i] - '0');
 			i++;
 		}
 	}
-	switch (format[i])
+	switch (fo[i])
 	{
 		case 'd':
 		case 'i':
@@ -156,11 +156,11 @@ int handle_field_width(va_list l, flags_t *f)
 		case 'o':
 		case 'x':
 		case 'X':
-			num_chars += handle_integer(format[i], width, args);
+			num_chars += handle_integer(fo[i], width, args);
 			break;
 		default:
 			num_chars += _putchar('%');
-			num_chars += _putchar(format[i]);
+			num_chars += _putchar(fo[i]);
 			break;
 	}
 	return (num_chars);
