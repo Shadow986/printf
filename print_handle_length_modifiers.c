@@ -3,75 +3,8 @@
 #include "main.h"
 
 /**
- * get_int - a function that retrieves an integer argument
- * @l: va_list parameter
- * @f: Pointer to flags_t structure
- * Return: Retrieved integer argument
- */
-int get_int(va_list l, flags_t *f)
-{
-	return (va_arg(l, int));
-}
-
-/**
- * get_octal - a function that prints a number in octal format
- * @l: va_list parameter
- * @f: Pointer to flags_t structure
- * Return: Length of printed characters
- */
-int get_octal(va_list l, flags_t *f)
-{
-	unsigned int num = va_arg(l, unsigned int);
-	unsigned int remainder;
-	int x = 0;
-	char octal_num[32] = {0};
-
-	while (num != 0)
-	{
-		remainder = num % 8;
-		num /= 8;
-		octal_num[x++] = remainder + '0';
-	}
-
-	for (--x; x >= 0; x--)
-	{
-		putchar(octal_num[x]);
-	}
-
-	return (x + 1);
-}
-
-/**
- * get_hex - a function that prints a number in hexadecimal format
- * @l: va_list parameter
- * @f: Pointer to flags_t structure
- * Return: Length of printed characters
- */
-int get_hex(va_list l, flags_t *f)
-{
-	unsigned int num = va_arg(l, unsigned int);
-	unsigned int remainder;
-	int x = 0;
-	char hex_num[32] = {0};
-
-	while (num != 0)
-	{
-		remainder = num % 16;
-		num /= 16;
-		hex_num[x++] = (remainder < 10) ? remainder + '0' : remainder - 10 + 'A';
-	}
-
-	for (--x; x >= 0; x--)
-	{
-		putchar(hex_num[x]);
-	}
-
-	return (x + 1);
-}
-
-/**
- * handle_length_modifiers - a function that handles length modifiers
- * for non-custom conversion specifiers
+ * handle_length_modifiers - a functyion that handles the
+ * length modifiers for non-custom conversion specifiers
  * @l: va_list parameter
  * @f: Pointer to flags_t structure
  * Return: Length of printed characters or -1 on error
@@ -117,12 +50,4 @@ int handle_length_modifiers(va_list l, flags_t *f)
 	}
 
 	return (length);
-}
-
-int main(void)
-{
-	int num = 42;
-
-	printf("Print integer: %d\n", num);
-	return (0);
 }
