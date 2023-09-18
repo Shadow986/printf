@@ -1,9 +1,9 @@
 #include "main.h"
 /**
- * get_print - This function determines the appropriate 
+ * get_print - This function determines the appropriate
  * printing function based on the conversion specifier passed to  _printf.
  * @s: char that contains the convo specifier.
- * Description: The function iterates through an array of structs ( func_arr[] ) 
+ * Description: The function iterates through an array of structs ( func_arr[] )
  * to find a match between the specifier passed to  _printf  and the first element
  *  of each struct. It then selects the appropriate printing function based on the match.
  * Return: A pointer to the printing function that matches the specified conversion specifier.
