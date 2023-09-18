@@ -80,10 +80,10 @@ int print_address(va_list l, flags_t *f);
 int print_percent(va_list l, flags_t *f);
 
 /* Function prototypes */
-int get_int(va_list l, flags_t *f);
-int get_uint(va_list l, flags_t *f);
-int get_octal(va_list l, flags_t *f);
-int get_hex(va_list l, flags_t *f);
 int handle_length_modifiers(va_list l, flags_t *f);
+int handle_field_width(va_list l, flags_t *f);
+int handle_precision(va_list l, flags_t *f);
+int handle_zero_flag(va_list l, flags_t *f);
+int handle_minus_flag(va_list l, flags_t *f);
 
 #endif
