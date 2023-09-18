@@ -1,6 +1,0 @@
-* Description: This function calls  get_print  to determine the appropriate
-* Description: The function invokes the  `convert`  function, which in turn converts the input number to the appropriate base and returns it as a string.
-* Description: The function invokes the  `convert`  function, which in turn converts the input number to the appropriate base and returns it as a string.
-* Description: The function invokes the  `convert`  function, which in turn converts the input number to the appropriate base and returns it as a string.g
-* Description: The function invokes the  `convert`  function, which in turn converts the input number to the appropriate base and returns it as a string.
-* Description: The function iterates through an array of structs
