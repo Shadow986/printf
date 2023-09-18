@@ -11,7 +11,7 @@
  */
 int get_int(va_list l, flags_t *f)
 {
-	return (get_printf(l, f));
+	return (get_int(l, f));
 }
 
 /**
@@ -41,12 +41,12 @@ int get_octal(va_list l, flags_t *f)
 }
 
 /**
- * print_hex - a function that prints a number in hexadecimal format.
+ * get_hex - a function that prints a number in hexadecimal format.
  * @l: va_list parameter (unused)
  * @f: Pointer to flags_t structure (unused)
  * Return: Length of printed characters or -1 on error
  */
-int print_hex(va_list l, flags_t *f)
+int get_hex(va_list l, flags_t *f)
 {
 	unsigned int num = va_arg(l, unsigned int);
 	unsigned int remainder;
@@ -96,17 +96,17 @@ int handle_length_modifiers(va_list l, flags_t *f)
 	{
 		case 'd':
 		case 'i':
-			length = print_int(l, f);
+			length = get_int(l, f);
 			break;
 		case 'u':
-			length = print_uint(l, f);
+			length = get_uint(l, f);
 			break;
 		case 'o':
-			length = print_octal(l, f);
+			length = get_octal(l, f);
 			break;
 		case 'x':
 		case 'X':
-			length = print_hex(l, f);
+			length = get_hex(l, f);
 			break;
 		default:
 			return (-1);
