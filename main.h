@@ -10,9 +10,9 @@
  * @plus: flag for the '+' character
  * @space: flag for the ' ' character
  * @hash: flag for the '#' character
- * @format: the format string
  * @l_modifier: l modifier flag
  * @h_modifier: h modifier flag
+ * @fo: pointer
  */
 typedef struct flags
 {
