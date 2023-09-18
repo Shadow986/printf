@@ -11,7 +11,7 @@
  */
 int handle_length_modifiers(va_list l, flags_t *f)
 {
-	char c = *(f->format);
+	char c = *(f->fo);
 	int length = 0;
 
 	switch (c)
