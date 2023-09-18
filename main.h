@@ -16,7 +16,7 @@
  */
 typedef struct flags
 {
-	const char *format;
+	const char *fo;
 	int l_modifier;
 	int h_modifier;
 	int plus;
