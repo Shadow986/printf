@@ -39,7 +39,7 @@ int handle_precision(va_list l, flags_t *f)
 			break;
 		case 'u':
 			precision = va_arg(l, int);
-			length = get_uint(l, f);
+			length = get_int(l, f);
 			break;
 		case 'o':
 			precision = va_arg(l, int);

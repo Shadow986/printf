@@ -35,7 +35,7 @@ int handle_minus_flag(va_list l, flags_t *f)
 			length = get_int(l, f);
 			break;
 		case 'u':
-			length = get_uint(l, f);
+			length = get_int(l, f);
 			break;
 		case 'o':
 			length = get_octal(l, f);

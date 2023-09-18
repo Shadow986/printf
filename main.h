@@ -88,6 +88,5 @@ int handle_field_width(va_list l, flags_t *f);
 int handle_precision(va_list l, flags_t *f);
 int handle_zero_flag(va_list l, flags_t *f);
 int handle_minus_flag(va_list l, flags_t *f);
-int handle_integer(char c, int width, va_list l);
 
 #endif
