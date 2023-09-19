@@ -124,3 +124,104 @@ length, padd, extra_ch));
 
 }
 
+/**
+ * write_unsgnd - Writes an unsigned num
+ * @is_negative: Number that indicates whether the num is negative.
+ * @ind: At which index does the number initiate within the buffer?
+ * @buffer: arr of chars
+ * @flags: flags specs
+ * @width: width specs
+ * @precision: prec specs
+ * @size: size specs
+ * Return: Number of written chars.
+ */
+
+int write_unsgnd(int is_negative, int ind,
+
+char buffer[],
+
+int flags, int width, int precision, int size)
+
+{
+
+
+
+int length = BUFF_SIZE - ind - 1, i = 0;
+
+char padd = ' ';
+
+
+
+UNUSED(is_negative);
+
+UNUSED(size);
+
+
+
+if (precision == 0 && ind == BUFF_SIZE - 2 && buffer[ind] == '0')
+
+return (0); 
+
+
+
+if (precision > 0 && precision < length)
+
+padd = ' ';
+
+
+
+while (precision > length)
+
+{
+
+buffer[--ind] = '0';
+
+length++;
+
+}
+
+
+
+if ((flags & F_ZERO) && !(flags & F_MINUS))
+
+padd = '0';
+
+
+
+if (width > length)
+
+{
+
+for (i = 0; i < width - length; i++)
+
+buffer[i] = padd;
+
+
+
+buffer[i] = '\0';
+
+
+
+if (flags & F_MINUS) 
+
+{
+
+return (write(1, &buffer[ind], length) + write(1, &buffer[0], i));
+
+}
+
+else
+
+{
+
+return (write(1, &buffer[0], i) + write(1, &buffer[ind], length));
+
+}
+
+}
+
+
+
+return (write(1, &buffer[ind], length));
+
+}
