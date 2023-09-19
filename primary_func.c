@@ -59,3 +59,19 @@ buffer[i--] = '0';
 i++;
 return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
+/**
+ * print_hexadecimal - prints an unsigned num in hex notation
+ * @types: lista of args
+ * @buffer: buffer arr
+ * @flags:  calc flags
+ * @width: width
+ * @precision: prec specs
+ * @size: size specs
+ * Return: num of chars
+ */
+int print_hexadecimal(va_list types, char buffer[],
+int flags, int width, int precision, int size)
+{
+return (print_hexa(types, "0123456789abcdef", buffer,
+flags, 'x', width, precision, size));
+}
