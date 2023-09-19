@@ -134,3 +134,12 @@ char buffer[], int flags, char flag_ch, int width, int precision, int size);
 int print_non_printable(va_list types, char buffer[],
 
 int flags, int width, int precision, int size);
+
+
+
+/* Funcion to print memory address */
+
+int print_pointer(va_list types, char buffer[],
+
+int flags, int width, int precision, int size);
+
