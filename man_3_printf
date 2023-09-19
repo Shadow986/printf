@@ -1,0 +1,96 @@
+# NAME
+
+printf - improved printf function
+
+# SYNOPSIS
+
+#include <unistd.h>
+#include "main.h"
+
+int _printf(const char *format, ...);
+
+# DESCRIPTION
+
+The   _printf   function is used to produce formatted output according to a given format string. It supports various conversion specifiers and flags.
+
+The function takes a format string as its argument, which can contain plain characters and format specifiers. The format specifiers start with a '%' character and are followed by optional flags, field width, precision, and length modifiers, and a conversion specifier.
+
+The function uses the   va_list   type to handle variable arguments. It retrieves the arguments based on the conversion specifiers in the format string.
+
+The function returns the number of characters printed on success, or -1 on error.
+
+# FORMAT SPECIFIERS
+
+The following format specifiers are supported by the   _printf   function:
+
+-   %c  : Prints a single character.
+-   %s  : Prints a null-terminated string.
+-   %d   or   %i  : Prints a signed decimal integer.
+-   %u  : Prints an unsigned decimal integer.
+-   %o  : Prints an unsigned octal integer.
+-   %x  : Prints an unsigned hexadecimal integer in lowercase.
+-   %X  : Prints an unsigned hexadecimal integer in uppercase.
+-   %p  : Prints the address of a variable in hexadecimal format.
+-   %r  : Prints a string in reverse.
+-   %R  : Prints a string using the ROT13 cipher.
+-   %%  : Prints a percent symbol.
+
+# FLAGS
+
+The following flags can be used with the format specifiers:
+
+-   -  : Left-aligns the output.
+-   +  : Prints a plus sign (+) for positive numbers.
+-       (space): Prints a space character for positive numbers.
+-   #  : Adds a prefix (0x or 0) for non-zero values in hexadecimal, octal, or address formats.
+
+# RETURN VALUE
+
+The   _printf   function returns the number of characters printed on success, or -1 on error.
+
+# EXAMPLES
+
+#include "main.h"
+
+int main(void)
+{
+    int len;
+
+    len = _printf("Hello, %s!\n", "world");
+    _printf("Length: %d\n", len);
+
+    _printf("Decimal: %d\n", 12345);
+    _printf("Octal: %o\n", 12345);
+    _printf("Hexadecimal: %x\n", 12345);
+
+    _printf("Address: %p\n", &len);
+
+    _printf("Reverse: %r\n", "Hello");
+
+    _printf("ROT13: %R\n", "Hello");
+
+    _printf("Percent: %%\n");
+
+    return (0);
+}
+
+Output:
+
+Hello, world!
+Length: 14
+Decimal: 12345
+Octal: 30071
+Hexadecimal: 3039
+Address: 0x7ffd5d4f8bdc
+Reverse: olleH
+ROT13: Uryyb
+Percent: %
+
+# AUTHORS
+
+Ben Vilakazi (xolanithegeengubane@gmail.com)
+Archford Chipadza (archie986jr@gmail.com)
+
+# SEE ALSO
+
+  man 3 printf 
