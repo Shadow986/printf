@@ -77,3 +77,31 @@ Each of these functions follows a similar pattern of retrieving data from the va
 9. The function returns the calculated  flags . 
  
 In summary, the  get_flags  function scans a formatted string and identifies the active flags by comparing the characters in the string with a predefined set of flag characters. It sets the corresponding flag bits in the  flags  variable and returns the calculated flags.
+
+# print_prec
+
+1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
+ 
+2. The function  get_precision  takes three parameters:  format , which is the formatted string in which to print the arguments,  i , which is a pointer to an integer, and  list , which is a list of arguments. 
+ 
+3. The function calculates and returns the precision for printing based on the provided format string. 
+ 
+4. Inside the function, there are several variables declared:  curr_i  and  precision  of type  int . 
+ 
+5. The function checks if the character immediately following the current position ( format[curr_i] ) is a period ('.'). If it is not, the function returns the default precision value of -1. 
+ 
+6. If the character is a period, the function sets the initial value of  precision  to 0. 
+ 
+7. The function then enters a loop that iterates through the characters of the  format  string, starting from the position after the period. 
+ 
+8. Inside the loop, the function checks if the current character is a digit using the  is_digit  function. If it is, the function updates the value of  precision  by multiplying it by 10 and adding the numerical value of the current digit. 
+ 
+9. If the current character is an asterisk ('*'), the function increments  curr_i  to skip the asterisk character and retrieves the precision value from the  list  using  va_arg . It then breaks out of the loop. 
+ 
+10. If the current character is neither a digit nor an asterisk, the function breaks out of the loop. 
+ 
+11. Finally, the value of  curr_i - 1  is assigned to  *i . This updates the value of  i  to the current position in the  format  string. 
+ 
+12. The function returns the calculated  precision . 
+ 
+In summary, the  get_precision  function calculates the precision for printing based on the provided format string. It checks if the format string contains a period, and if so, it iterates through the characters after the period to determine the precision value. The precision can be either a specified numerical value or retrieved from the argument list using an asterisk. The function returns the calculated precision value.
