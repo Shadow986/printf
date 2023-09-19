@@ -44,3 +44,14 @@ Each of these functions is responsible for printing a specific type of data and 
  
 Each of these functions follows a similar pattern of retrieving an unsigned number from the variable argument list, converting it to the desired notation, and then calling the  write_unsgnd  function to handle the printing
 
+# secondary_func
+
+1. The function  print_pointer  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a pointer value from the variable argument list using  va_arg  and performs operations to convert and print the pointer. It converts the pointer value to a hexadecimal representation, handles flags and padding, and calls the  write_pointer  function to print the pointer. The function returns the number of characters printed. 
+ 
+2. The function  print_non_printable  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a string from the variable argument list using  va_arg  and performs operations to print non-printable characters in a hexadecimal format. It checks each character in the string using the  is_printable  function and appends the appropriate hexadecimal code to the buffer. The function then writes the contents of the buffer to the standard output and returns the number of characters printed. 
+ 
+3. The function  print_reverse  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a string from the variable argument list using  va_arg  and prints the string in reverse order. The function iterates over the characters in the string, starting from the last character, and writes them to the standard output. It returns the number of characters printed. 
+ 
+4. The function  print_rot13string  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a string from the variable argument list using  va_arg  and performs a ROT13 encryption on the string. It replaces each character in the string with the corresponding ROT13 character and writes the resulting string to the standard output. The function returns the number of characters printed. 
+ 
+Each of these functions follows a similar pattern of retrieving data from the variable argument list, performing necessary operations, and writing the result to the standard output.
