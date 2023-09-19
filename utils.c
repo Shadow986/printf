@@ -106,3 +106,30 @@ return ((short)num);
 return ((int)num);
 
 }
+
+
+
+/**
+ * convert_size_unsgnd - Casts a num to spec size
+ * @num: num casted
+ * @size: num indicating the type to be casted
+ * Return: casted val
+ */
+
+long int convert_size_unsgnd(unsigned long int num, int size)
+
+{
+
+if (size == S_LONG)
+
+return (num);
+
+else if (size == S_SHORT)
+
+return ((unsigned short)num);
+
+
+
+return ((unsigned int)num);
+
+}
