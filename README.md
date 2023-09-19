@@ -153,3 +153,25 @@ In summary, the  get_size  function calculates the size to cast the argument bas
 10. The function returns the calculated  width . 
  
 In summary, the  get_width  function calculates the width for printing based on the provided format string. It iterates through the characters after the current position in the format string and determines the width value. The width can be either a specified numerical value or retrieved from the argument list using an asterisk. The function returns the calculated width value.
+
+# handle_print
+
+1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
+ 
+2. The function  handle_print  takes several parameters:  fmt , which is the formatted string in which to print the arguments,  ind , which is a pointer to an integer representing the current position in the format string,  list , which is a list of arguments,  buffer , which is a buffer array to handle the print,  flags , which calculates active flags,  width , which gets the width,  precision , which is the precision specification, and  size , which is the size specifier. 
+ 
+3. The function is responsible for printing an argument based on its type. 
+ 
+4. Inside the function, there are several variables declared:  i ,  unknow_len , and  printed_chars  of type  int , and  fmt_types  which is an array of structures. Each structure in the  fmt_types  array represents a format specifier and its corresponding print function. 
+ 
+5. The function uses a loop to iterate through the  fmt_types  array to find a match between the current format specifier ( fmt[*ind] ) and the format specifiers in the array. 
+ 
+6. If a match is found, the corresponding print function is called with the appropriate arguments, and the result is returned. 
+ 
+7. If no match is found, the code checks if the current format specifier is the null terminator ('\0'). If it is, it means that the format string has reached its end, and the function returns -1. 
+ 
+8. If the current format specifier is not the null terminator, it means that it is an unknown format specifier. In this case, the function handles the unknown format specifier by writing the '%' character to the standard output, and optionally writing a space character if the previous character was a space. If there is a width specified, the function adjusts the index  *ind  to skip the unknown format specifier and returns 1. 
+ 
+9. Finally, the function returns the number of characters printed, which is stored in the  printed_chars  variable. 
+ 
+In summary, the  handle_print  function is responsible for printing an argument based on its type. It iterates through the format specifiers in the  fmt_types  array, finds a match for the current format specifier, and calls the corresponding print function. If the format specifier is unknown, it handles it accordingly. The function returns the number of characters printed or -1 if the format string has reached its end.
