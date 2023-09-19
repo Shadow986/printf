@@ -105,3 +105,27 @@ In summary, the  get_flags  function scans a formatted string and identifies the
 12. The function returns the calculated  precision . 
  
 In summary, the  get_precision  function calculates the precision for printing based on the provided format string. It checks if the format string contains a period, and if so, it iterates through the characters after the period to determine the precision value. The precision can be either a specified numerical value or retrieved from the argument list using an asterisk. The function returns the calculated precision value.
+
+# print_size
+
+1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
+ 
+2. The function  get_size  takes two parameters:  format , which is the formatted string in which to print the arguments, and  i , which is a pointer to an integer. 
+ 
+3. The function calculates and returns the size to cast the argument based on the provided format string. 
+ 
+4. Inside the function, there are several variables declared:  curr_i  and  size  of type  int . 
+ 
+5. The function checks the character immediately following the current position ( format[curr_i] ) to determine the size of the argument. 
+ 
+6. If the character is 'l', the function sets the value of  size  to  S_LONG , which likely represents a long size. 
+ 
+7. If the character is 'h', the function sets the value of  size  to  S_SHORT , which likely represents a short size. 
+ 
+8. If the value of  size  remains 0, it means that there is no specific size specified in the format string. In this case, the function updates the value of  *i  to the current position in the  format  string minus 1. 
+ 
+9. If a specific size is found, the function updates the value of  *i  to the current position in the  format  string. 
+ 
+10. Finally, the function returns the calculated  size . 
+ 
+In summary, the  get_size  function calculates the size to cast the argument based on the provided format string. It checks the characters following the current position in the format string and determines the size based on the presence of 'l' or 'h'. The function returns the calculated size value, which can be  S_LONG ,  S_SHORT , or 0 if no specific size is specified
