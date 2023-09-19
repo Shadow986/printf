@@ -1,5 +1,4 @@
-# printf_version 3.0
-
+# printf version 3.1.1
 improved printf function
 
 # write_func
@@ -189,3 +188,42 @@ In summary, the  handle_print  function is responsible for printing an argument 
 5. The function  convert_size_number  casts a number  num  to the specified size indicated by the  size  parameter. It takes a long integer  num  and an integer  size  as input. If  size  is  S_LONG , the function returns  num  as a long integer. If  size  is  S_SHORT , the function returns  num  as a short integer. Otherwise, the function returns  num  as an integer. 
  
 6. The function  convert_size_unsgnd  casts an unsigned number  num  to the specified size indicated by the  size  parameter. It takes an unsigned long integer  num  and an integer  size  as input. If  size  is  S_LONG , the function returns  num  as an unsigned long integer. If  size  is  S_SHORT , the function returns  num  as an unsigned short integer. Otherwise, the function returns  num  as an unsigned integer
+
+# _printf
+
+1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
+ 
+2. The function  print_buffer  is declared. It takes an array of characters  buffer  and a pointer to an integer  buff_ind  as parameters. This function is responsible for printing the contents of the buffer if it exists. 
+ 
+3. The function  _printf  is defined. It takes a format string  format  and a variable number of arguments using the ellipsis notation. 
+ 
+4. Several variables are declared:  i ,  printed ,  printed_chars ,  flags ,  width ,  precision ,  size , and  buff_ind . The  buff_ind  variable represents the current index in the buffer. 
+ 
+5. The function checks if the  format  string is  NULL . If it is, the function returns -1. 
+ 
+6. The  va_start  macro is used to initialize the  list  variable for accessing the variable arguments. 
+ 
+7. The function enters a loop that iterates through the characters of the  format  string. 
+ 
+8. If the current character is not '%', it means it is a regular character to be printed. The character is added to the buffer, and the  buff_ind  is incremented. If the buffer is full (reaches  BUFF_SIZE ), the  print_buffer  function is called to print the contents of the buffer, and  buff_ind  is reset to 0. The  printed_chars  variable is incremented. 
+ 
+9. If the current character is '%', it means it is a format specifier. The  print_buffer  function is called to print the contents of the buffer. The  get_flags ,  get_width ,  get_precision , and  get_size  functions are called to retrieve the flags, width, precision, and size for the format specifier. The index  i  is incremented to skip the format specifier character. 
+ 
+10. The  handle_print  function is called to handle the printing of the argument based on its type. The result of the  handle_print  function is stored in the  printed  variable. 
+ 
+11. If the  printed  variable is -1, it means there was an error in handling the format specifier. In this case, the function returns -1. 
+ 
+12. The  printed_chars  variable is incremented by the value of  printed , which represents the number of characters printed. 
+ 
+13. After the loop, the  print_buffer  function is called again to print any remaining contents in the buffer. 
+ 
+14. The  va_end  macro is used to clean up the variable arguments. 
+ 
+15. The function returns the total number of characters printed, stored in the  printed_chars  variable. 
+ 
+In summary, the  _printf  function is a custom implementation of the  printf  function. It iterates through the format string, handles regular characters by adding them to a buffer, and handles format specifiers by calling the appropriate functions to retrieve the necessary information and printing the argument. The function uses a buffer to optimize the printing process and returns the total number of characters printed.
+
+# Authors
+
+Ben Vilakazi - xolanithegeengubane@gmail.com
+Archford Chipadza - archie986jr@gmail.com
