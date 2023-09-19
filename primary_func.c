@@ -27,7 +27,6 @@ num /= 10;
 i++;
 return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
-
 /**
  * print_octal - print an unsigned int in octal notation
  * @types: lista of args
@@ -59,6 +58,7 @@ buffer[i--] = '0';
 i++;
 return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
+
 /**
  * print_hexadecimal - prints an unsigned num in hex notation
  * @types: lista of args
@@ -91,6 +91,7 @@ int flags, int width, int precision, int size)
 return (print_hexa(types, "0123456789ABCDEF", buffer,
 flags, 'X', width, precision, size));
 }
+
 /**
  * print_hexa - print a hex num in upper or lower
  * @types: list of args
