@@ -140,3 +140,33 @@ If the current character is not '%', it simply prints the character using the  `
 After the loop ends, the function calls  `_putchar`  with the argument  `-1`  to flush any remaining characters in the buffer.
 
 Finally, it ends by cleaning up the  `va_list`  and returns the total count of characters printed.
+
+# Printf-like Program 
+ 
+This program implements a printf-like function that handles non-custom conversion specifiers. It includes functions to handle length modifiers, field width, precision, and flag characters. 
+ 
+## File Structure 
+ 
+The program consists of the following files: 
+ 
+10. precision.c : Contains the  handle_precision  function that handles precision for non-custom conversion specifiers. 
+8. print_handle_length_modifiers.c : Contains the  handle_length_modifiers  function that handles length modifiers for non-custom conversion specifiers. 
+11. handle_zero_flag.c : Contains the  handle_zero_flag  function that handles the '0' flag character for non-custom conversion specifiers. 
+12. handle_minus_flag.c : Contains the  handle_minus_flag  function that handles the '-' flag character for non-custom conversion specifiers. 
+9. handle_field_width.c : Contains the  handle_field_width  function that handles the field width for non-custom conversion specifiers. 
+ 
+## Functionality 
+ 
+8. **Handle Length Modifiers**: The  handle_length_modifiers  function handles the length modifiers 'l' and 'h' for non-custom conversion specifiers. It sets the appropriate flag in the  flags_t  structure. 
+ 
+9. **Handle Field Width**: The  handle_field_width  function handles the field width for non-custom conversion specifiers. It retrieves the field width from the format string and performs the necessary actions based on the conversion specifier. 
+ 
+10. **Handle Precision**: The  handle_precision  function handles the precision for non-custom conversion specifiers. It retrieves the precision value from the format string and performs the necessary actions based on the conversion specifier. 
+ 
+11. **Handle 0 Flag Character**: The  handle_zero_flag  function handles the '0' flag character for non-custom conversion specifiers. It sets the appropriate flag in the  flags_t  structure. 
+ 
+12. **Handle - Flag Character**: The  handle_minus_flag  function handles the '-' flag character for non-custom conversion specifiers. It sets the appropriate flag in the  flags_t  structure. 
+ 
+## Usage 
+ 
+To use the functions provided in this program, include the necessary header files and call the respective functions as needed. Make sure to pass the required arguments and handle the return values appropriately.
