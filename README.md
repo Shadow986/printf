@@ -55,3 +55,25 @@ Each of these functions follows a similar pattern of retrieving an unsigned numb
 4. The function  print_rot13string  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a string from the variable argument list using  va_arg  and performs a ROT13 encryption on the string. It replaces each character in the string with the corresponding ROT13 character and writes the resulting string to the standard output. The function returns the number of characters printed. 
  
 Each of these functions follows a similar pattern of retrieving data from the variable argument list, performing necessary operations, and writing the result to the standard output.
+
+# get_flags
+
+1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
+ 
+2. The function  get_flags  takes two parameters:  format , which is the formatted string in which to print the arguments, and  i , which is a pointer to an integer. The function returns an integer representing the calculated flags. 
+ 
+3. Inside the function, there are several variables declared:  j  and  curr_i  of type  int , and  flags  of type  int . There is also a constant character array  FLAGS_CH  containing the characters that represent the flags ('-', '+', '0', '#', ' '), and a corresponding constant integer array  FLAGS_ARR  containing the flag values (F_MINUS, F_PLUS, F_ZERO, F_HASH, F_SPACE, 0). 
+ 
+4. The function uses a nested loop structure to iterate through the characters of the  format  string. The outer loop iterates from the current value of  *i + 1  until the end of the string ( format[curr_i] != '\0' ). 
+ 
+5. Inside the outer loop, there is an inner loop that iterates through the  FLAGS_CH  array. It checks if the current character ( format[curr_i] ) matches any of the flag characters ( FLAGS_CH[j] ). 
+ 
+6. If a match is found, the corresponding flag value ( FLAGS_ARR[j] ) is bitwise ORed with the  flags  variable. This sets the corresponding flag bit to 1. 
+ 
+7. After the inner loop, there is an additional check to see if the inner loop reached the end of the  FLAGS_CH  array ( FLAGS_CH[j] == 0 ). If so, it breaks out of the outer loop as well. 
+ 
+8. Finally, the value of  curr_i - 1  is assigned to  *i . This updates the value of  i  to the current position in the  format  string. 
+ 
+9. The function returns the calculated  flags . 
+ 
+In summary, the  get_flags  function scans a formatted string and identifies the active flags by comparing the characters in the string with a predefined set of flag characters. It sets the corresponding flag bits in the  flags  variable and returns the calculated flags.
