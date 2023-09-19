@@ -1,4 +1,5 @@
 # printf_version 3.0
+
 improved printf function
 
 # write_func
@@ -14,3 +15,17 @@ improved printf function
 5. The code defines the function  write_unsgnd , which is responsible for printing an unsigned number. It follows a similar logic to  write_number , but with some differences in handling precision and padding. 
  
 6. The code defines the function  write_pointer , which is responsible for printing a memory address. It takes several parameters ( buffer ,  ind ,  length ,  width ,  flags ,  padd ,  extra_c ,  padd_start ) and builds the memory address representation in the  buffer  array. It handles padding, extra characters, and the  F_MINUS  flag. 
+
+# main_func
+
+1. The function  print_char  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a character from the variable argument list using  va_arg  and calls the  handle_write_char  function to print the character. The function then returns the number of characters printed. 
+ 
+2. The function  print_string  also takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a string from the variable argument list using  va_arg  and performs various operations on the string. It calculates the length of the string, handles precision and width, and writes the modified string to the standard output. The function returns the number of characters printed. 
+ 
+3. The function  print_percent  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It simply writes a percent sign ( % ) to the standard output and returns the number of characters printed. 
+ 
+4. The function  print_int  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves an integer from the variable argument list using  va_arg  and performs operations to convert and print the integer. It handles negative integers, converts the integer to a string representation, and calls the  write_number  function to print the number. The function returns the number of characters printed. 
+ 
+5. The function  print_binary  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves an unsigned integer from the variable argument list using  va_arg  and converts it to binary representation. It then writes the binary representation to the standard output and returns the number of characters printed. 
+ 
+Each of these functions is responsible for printing a specific type of data and follows a similar pattern of retrieving data from the variable argument list, performing necessary operations, and writing the result to the standard output.
