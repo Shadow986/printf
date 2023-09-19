@@ -29,3 +29,27 @@
 #define F_SPACE 16
 
 
+
+/* SIZES */
+
+#define S_LONG 2
+
+#define S_SHORT 1
+
+
+
+/**
+ * struct fmt - struct op
+ * @fmt: The format.
+ * @fn: function ass
+ */
+
+struct fmt
+
+{
+
+char fmt;
+
+int (*fn)(va_list, char[], int, int, int, int);
+
+};
