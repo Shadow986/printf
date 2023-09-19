@@ -175,3 +175,17 @@ In summary, the  get_width  function calculates the width for printing based on 
 9. Finally, the function returns the number of characters printed, which is stored in the  printed_chars  variable. 
  
 In summary, the  handle_print  function is responsible for printing an argument based on its type. It iterates through the format specifiers in the  fmt_types  array, finds a match for the current format specifier, and calls the corresponding print function. If the format specifier is unknown, it handles it accordingly. The function returns the number of characters printed or -1 if the format string has reached its end.
+
+# utils
+
+1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
+ 
+2. The function  is_printable  takes a character  c  as input and evaluates whether it is a printable character. It checks if the ASCII value of  c  is within the range of printable characters (32 to 126). If  c  is printable, the function returns 1; otherwise, it returns 0. 
+ 
+3. The function  append_hexa_code  appends the ASCII value of a character in hexadecimal format to a buffer array. It takes the buffer array, the starting index  i , and the ASCII code as input. The function converts the ASCII code to its hexadecimal representation and appends it to the buffer array. The function returns the number of characters appended, which is always 3. 
+ 
+4. The function  is_digit  takes a character  c  as input and checks if it is a digit. It does this by comparing the ASCII value of  c  with the ASCII values of '0' to '9'. If  c  is a digit, the function returns 1; otherwise, it returns 0. 
+ 
+5. The function  convert_size_number  casts a number  num  to the specified size indicated by the  size  parameter. It takes a long integer  num  and an integer  size  as input. If  size  is  S_LONG , the function returns  num  as a long integer. If  size  is  S_SHORT , the function returns  num  as a short integer. Otherwise, the function returns  num  as an integer. 
+ 
+6. The function  convert_size_unsgnd  casts an unsigned number  num  to the specified size indicated by the  size  parameter. It takes an unsigned long integer  num  and an integer  size  as input. If  size  is  S_LONG , the function returns  num  as an unsigned long integer. If  size  is  S_SHORT , the function returns  num  as an unsigned short integer. Otherwise, the function returns  num  as an unsigned integer
