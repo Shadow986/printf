@@ -26,10 +26,8 @@ int handle_precision(va_list l, flags_t *f)
 		default:
 			return (-1);
 	}
-
 	f->fo++;
 	c = *(f->fo);
-
 	switch (c)
 	{
 		case 'd':
@@ -53,9 +51,7 @@ int handle_precision(va_list l, flags_t *f)
 		default:
 			return (-1);
 	}
-
 	if (precision > length)
 		length = precision;
-
 	return (length);
 }
