@@ -1,229 +1,147 @@
-# printf version 3.1.1
+# printf_proto-type
 improved printf function
 
-# write_func
+# Write_func
 
-1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
- 
-2. The code defines the function  handle_write_char , which takes several parameters ( c ,  buffer ,  flags ,  width ,  precision ,  size ) and is responsible for printing a single character. The function first checks if the  F_ZERO  flag is set, and assigns the padding character accordingly. It then places the character at the beginning of the  buffer  array and adds padding characters to the right of it, based on the  width  parameter. Finally, it writes the contents of the  buffer  array to the standard output and returns the number of characters printed. 
- 
-3. The code defines the function  write_number , which takes similar parameters as  handle_write_char  and is responsible for printing a number. It first determines if the number is negative and assigns an extra character ( - ,  + , or space) accordingly. Then, it calls the function  write_num  to handle the actual printing of the number. 
- 
-4. The code defines the function  write_num , which is called by  write_number  and  write_pointer . This function takes several parameters ( ind ,  buffer ,  flags ,  width ,  prec ,  length ,  padd ,  extra_c ) and is responsible for printing a number using a buffer. It handles various cases such as precision, padding, and extra characters. The function builds the number representation in the  buffer  array and writes it to the standard output. 
- 
-5. The code defines the function  write_unsgnd , which is responsible for printing an unsigned number. It follows a similar logic to  write_number , but with some differences in handling precision and padding. 
- 
-6. The code defines the function  write_pointer , which is responsible for printing a memory address. It takes several parameters ( buffer ,  ind ,  length ,  width ,  flags ,  padd ,  extra_c ,  padd_start ) and builds the memory address representation in the  buffer  array. It handles padding, extra characters, and the  F_MINUS  flag. 
+This code defines two functions,  `_putchar`  and  `_puts` .
 
-# main_func
+The  `_putchar`  function takes a single character as an argument and writes it to standard output (stdout). It uses a static buffer of 1024 characters to minimize the number of calls to the  `write`  system call. If the buffer is full or the character  `-1`  is passed as an argument, the function flushes the buffer by calling  `write`  with the buffer and its current size as arguments. The function returns  `1`  on success and  `-1`  on error.
 
-1. The function  print_char  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a character from the variable argument list using  va_arg  and calls the  handle_write_char  function to print the character. The function then returns the number of characters printed. 
- 
-2. The function  print_string  also takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a string from the variable argument list using  va_arg  and performs various operations on the string. It calculates the length of the string, handles precision and width, and writes the modified string to the standard output. The function returns the number of characters printed. 
- 
-3. The function  print_percent  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It simply writes a percent sign ( % ) to the standard output and returns the number of characters printed. 
- 
-4. The function  print_int  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves an integer from the variable argument list using  va_arg  and performs operations to convert and print the integer. It handles negative integers, converts the integer to a string representation, and calls the  write_number  function to print the number. The function returns the number of characters printed. 
- 
-5. The function  print_binary  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves an unsigned integer from the variable argument list using  va_arg  and converts it to binary representation. It then writes the binary representation to the standard output and returns the number of characters printed. 
- 
-Each of these functions is responsible for printing a specific type of data and follows a similar pattern of retrieving data from the variable argument list, performing necessary operations, and writing the result to the standard output.
+The  `_puts`  function takes a pointer to a null-terminated string as an argument and writes the string to standard output using the  `_putchar`  function. It returns the number of characters written.
 
-# primary_func
+Both functions rely on the  `write`  system call, which is defined in the  `unistd.h`  header file. The  `main.h`  header file is included, but its contents are not shown in this code snippet.
 
-1. The function  print_unsigned  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves an unsigned long integer from the variable argument list using  va_arg  and performs operations to convert and print the number. It converts the number to a string representation, calls the  write_unsgnd  function to print the number, and returns the number of characters printed. 
- 
-2. The function  print_octal  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves an unsigned long integer from the variable argument list using  va_arg  and converts it to octal notation. It then calls the  write_unsgnd  function to print the octal number and returns the number of characters printed. If the  F_HASH  flag is set and the initial number is not zero, it adds a leading '0' to the output. 
- 
-3. The function  print_hexadecimal  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves an unsigned long integer from the variable argument list using  va_arg  and converts it to hexadecimal notation using lowercase letters. It calls the  print_hexa  function with the appropriate mapping array and returns the number of characters printed. 
- 
-4. The function  print_hexa_upper  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves an unsigned long integer from the variable argument list using  va_arg  and converts it to hexadecimal notation using uppercase letters. It calls the  print_hexa  function with the appropriate mapping array and returns the number of characters printed. 
- 
-5. The function  print_hexa  takes a variable argument list ( types ), a mapping array ( map_to ), and other parameters ( buffer ,  flags ,  flag_ch ,  width ,  precision ,  size ). It retrieves an unsigned long integer from the variable argument list using  va_arg  and converts it to hexadecimal notation using the given mapping array. It calls the  write_unsgnd  function to print the hexadecimal number and returns the number of characters printed. If the  F_HASH  flag is set and the initial number is not zero, it adds a leading  flag_ch  (either 'x' or 'X') and '0' to the output. 
- 
-Each of these functions follows a similar pattern of retrieving an unsigned number from the variable argument list, converting it to the desired notation, and then calling the  write_unsgnd  function to handle the printing
+# print_num
 
-# secondary_func
+This code defines several functions related to printing integers.
 
-1. The function  print_pointer  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a pointer value from the variable argument list using  va_arg  and performs operations to convert and print the pointer. It converts the pointer value to a hexadecimal representation, handles flags and padding, and calls the  write_pointer  function to print the pointer. The function returns the number of characters printed. 
- 
-2. The function  print_non_printable  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a string from the variable argument list using  va_arg  and performs operations to print non-printable characters in a hexadecimal format. It checks each character in the string using the  is_printable  function and appends the appropriate hexadecimal code to the buffer. The function then writes the contents of the buffer to the standard output and returns the number of characters printed. 
- 
-3. The function  print_reverse  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a string from the variable argument list using  va_arg  and prints the string in reverse order. The function iterates over the characters in the string, starting from the last character, and writes them to the standard output. It returns the number of characters printed. 
- 
-4. The function  print_rot13string  takes a variable argument list ( types ) and other parameters ( buffer ,  flags ,  width ,  precision ,  size ). It retrieves a string from the variable argument list using  va_arg  and performs a ROT13 encryption on the string. It replaces each character in the string with the corresponding ROT13 character and writes the resulting string to the standard output. The function returns the number of characters printed. 
- 
-Each of these functions follows a similar pattern of retrieving data from the variable argument list, performing necessary operations, and writing the result to the standard output.
+The  `print_int`  function takes a variable argument list  `l`  and a pointer to a struct  `flags_t`  as arguments. It retrieves an integer from the variable argument list using  `va_arg` . It then determines the number of digits in the integer using the  `count_digit`  function. 
 
-# get_flags
+Based on the flags stored in the  `flags_t`  struct, the function may print a space character, a plus character, or increment the result count. It finally calls the  `print_number`  function to print the integer and returns the result count.
 
-1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
- 
-2. The function  get_flags  takes two parameters:  format , which is the formatted string in which to print the arguments, and  i , which is a pointer to an integer. The function returns an integer representing the calculated flags. 
- 
-3. Inside the function, there are several variables declared:  j  and  curr_i  of type  int , and  flags  of type  int . There is also a constant character array  FLAGS_CH  containing the characters that represent the flags ('-', '+', '0', '#', ' '), and a corresponding constant integer array  FLAGS_ARR  containing the flag values (F_MINUS, F_PLUS, F_ZERO, F_HASH, F_SPACE, 0). 
- 
-4. The function uses a nested loop structure to iterate through the characters of the  format  string. The outer loop iterates from the current value of  *i + 1  until the end of the string ( format[curr_i] != '\0' ). 
- 
-5. Inside the outer loop, there is an inner loop that iterates through the  FLAGS_CH  array. It checks if the current character ( format[curr_i] ) matches any of the flag characters ( FLAGS_CH[j] ). 
- 
-6. If a match is found, the corresponding flag value ( FLAGS_ARR[j] ) is bitwise ORed with the  flags  variable. This sets the corresponding flag bit to 1. 
- 
-7. After the inner loop, there is an additional check to see if the inner loop reached the end of the  FLAGS_CH  array ( FLAGS_CH[j] == 0 ). If so, it breaks out of the outer loop as well. 
- 
-8. Finally, the value of  curr_i - 1  is assigned to  *i . This updates the value of  i  to the current position in the  format  string. 
- 
-9. The function returns the calculated  flags . 
- 
-In summary, the  get_flags  function scans a formatted string and identifies the active flags by comparing the characters in the string with a predefined set of flag characters. It sets the corresponding flag bits in the  flags  variable and returns the calculated flags.
+The  `print_unsigned`  function is similar to  `print_int` , but it is used for printing unsigned integers. It retrieves an unsigned integer from the variable argument list using  `va_arg`  and converts it to a string using the  `convert`  function. It then calls  `_puts`  to print the string representation of the unsigned integer and returns the number of characters printed.
 
-# print_prec
+The  `print_number`  function is a helper function that recursively prints each digit of an integer. It first checks if the integer is negative and prints a minus sign if necessary. It then recursively divides the absolute value of the integer by 10 and calls itself until there are no more digits left. Finally, it prints the last digit by adding the ASCII value of '0' to the remainder of the division.
 
-1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
- 
-2. The function  get_precision  takes three parameters:  format , which is the formatted string in which to print the arguments,  i , which is a pointer to an integer, and  list , which is a list of arguments. 
- 
-3. The function calculates and returns the precision for printing based on the provided format string. 
- 
-4. Inside the function, there are several variables declared:  curr_i  and  precision  of type  int . 
- 
-5. The function checks if the character immediately following the current position ( format[curr_i] ) is a period ('.'). If it is not, the function returns the default precision value of -1. 
- 
-6. If the character is a period, the function sets the initial value of  precision  to 0. 
- 
-7. The function then enters a loop that iterates through the characters of the  format  string, starting from the position after the period. 
- 
-8. Inside the loop, the function checks if the current character is a digit using the  is_digit  function. If it is, the function updates the value of  precision  by multiplying it by 10 and adding the numerical value of the current digit. 
- 
-9. If the current character is an asterisk ('*'), the function increments  curr_i  to skip the asterisk character and retrieves the precision value from the  list  using  va_arg . It then breaks out of the loop. 
- 
-10. If the current character is neither a digit nor an asterisk, the function breaks out of the loop. 
- 
-11. Finally, the value of  curr_i - 1  is assigned to  *i . This updates the value of  i  to the current position in the  format  string. 
- 
-12. The function returns the calculated  precision . 
- 
-In summary, the  get_precision  function calculates the precision for printing based on the provided format string. It checks if the format string contains a period, and if so, it iterates through the characters after the period to determine the precision value. The precision can be either a specified numerical value or retrieved from the argument list using an asterisk. The function returns the calculated precision value.
+The  `count_digit`  function calculates the number of digits in an integer. It first checks if the integer is negative and takes its absolute value. It then divides the absolute value by 10 in a loop until it becomes zero, incrementing a counter variable  `d`  with each iteration. The function returns the value of  `d` , which represents the number of digits in the integer.
 
-# print_size
+# print_custom
 
-1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
- 
-2. The function  get_size  takes two parameters:  format , which is the formatted string in which to print the arguments, and  i , which is a pointer to an integer. 
- 
-3. The function calculates and returns the size to cast the argument based on the provided format string. 
- 
-4. Inside the function, there are several variables declared:  curr_i  and  size  of type  int . 
- 
-5. The function checks the character immediately following the current position ( format[curr_i] ) to determine the size of the argument. 
- 
-6. If the character is 'l', the function sets the value of  size  to  S_LONG , which likely represents a long size. 
- 
-7. If the character is 'h', the function sets the value of  size  to  S_SHORT , which likely represents a short size. 
- 
-8. If the value of  size  remains 0, it means that there is no specific size specified in the format string. In this case, the function updates the value of  *i  to the current position in the  format  string minus 1. 
- 
-9. If a specific size is found, the function updates the value of  *i  to the current position in the  format  string. 
- 
-10. Finally, the function returns the calculated  size . 
- 
-In summary, the  get_size  function calculates the size to cast the argument based on the provided format string. It checks the characters following the current position in the format string and determines the size based on the presence of 'l' or 'h'. The function returns the calculated size value, which can be  S_LONG ,  S_SHORT , or 0 if no specific size is specified
+This code defines several functions related to printing special characters and strings in different formats.
 
-# print_width
+The  `print_bigS`  function is used for printing non-printable characters. It takes a variable argument list  `l`  and a pointer to a struct  `flags_t`  as arguments. It retrieves a string from the variable argument list using  `va_arg` . If the string is  `NULL` , it prints  `(null)`  and returns the number of characters printed. Otherwise, it iterates through each character of the string. If the character is a non-printable character (ASCII value less than 32 or greater than or equal to 127), it prints  `\x`  followed by the ASCII code value in hexadecimal. It uses the  `convert`  function to convert the ASCII code to a hexadecimal string representation and prints it. If the character is a printable character, it simply prints the character. The function returns the total number of characters printed.
 
-1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
- 
-2. The function  get_width  takes three parameters:  format , which is the formatted string in which to print the arguments,  i , which is a pointer to an integer, and  list , which is a list of arguments. 
- 
-3. The function calculates and returns the width for printing based on the provided format string. 
- 
-4. Inside the function, there are several variables declared:  curr_i  and  width  of type  int . 
- 
-5. The function uses a loop to iterate through the characters of the  format  string, starting from the position after the current value of  *i . 
- 
-6. Inside the loop, the function checks if the current character is a digit using the  is_digit  function. If it is, the function updates the value of  width  by multiplying it by 10 and adding the numerical value of the current digit. 
- 
-7. If the current character is an asterisk ('*'), the function increments  curr_i  to skip the asterisk character and retrieves the width value from the  list  using  va_arg . It then breaks out of the loop. 
- 
-8. If the current character is neither a digit nor an asterisk, the function breaks out of the loop. 
- 
-9. Finally, the value of  curr_i - 1  is assigned to  *i . This updates the value of  i  to the current position in the  format  string. 
- 
-10. The function returns the calculated  width . 
- 
-In summary, the  get_width  function calculates the width for printing based on the provided format string. It iterates through the characters after the current position in the format string and determines the width value. The width can be either a specified numerical value or retrieved from the argument list using an asterisk. The function returns the calculated width value.
+The  `print_rev`  function is used for printing a string in reverse. It takes a variable argument list  `l`  and a pointer to a struct  `flags_t`  as arguments. It retrieves a string from the variable argument list using  `va_arg` . If the string is  `NULL` , it assigns  `"(null)"`  to the string. It then calculates the length of the string by iterating through it. Finally, it iterates through the string in reverse order and prints each character. The function returns the length of the printed string.
 
-# handle_print
+The  `print_rot13`  function is used for printing a string using the ROT13 cipher. It takes a variable argument list  `l`  and a pointer to a struct  `flags_t`  as arguments. It retrieves a string from the variable argument list using  `va_arg` . It then iterates through each character of the string. If the character is not a letter, it prints the character as it is. If the character is a letter, it finds the corresponding character in the ROT13 cipher and prints it. The function returns the number of characters printed.
 
-1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
- 
-2. The function  handle_print  takes several parameters:  fmt , which is the formatted string in which to print the arguments,  ind , which is a pointer to an integer representing the current position in the format string,  list , which is a list of arguments,  buffer , which is a buffer array to handle the print,  flags , which calculates active flags,  width , which gets the width,  precision , which is the precision specification, and  size , which is the size specifier. 
- 
-3. The function is responsible for printing an argument based on its type. 
- 
-4. Inside the function, there are several variables declared:  i ,  unknow_len , and  printed_chars  of type  int , and  fmt_types  which is an array of structures. Each structure in the  fmt_types  array represents a format specifier and its corresponding print function. 
- 
-5. The function uses a loop to iterate through the  fmt_types  array to find a match between the current format specifier ( fmt[*ind] ) and the format specifiers in the array. 
- 
-6. If a match is found, the corresponding print function is called with the appropriate arguments, and the result is returned. 
- 
-7. If no match is found, the code checks if the current format specifier is the null terminator ('\0'). If it is, it means that the format string has reached its end, and the function returns -1. 
- 
-8. If the current format specifier is not the null terminator, it means that it is an unknown format specifier. In this case, the function handles the unknown format specifier by writing the '%' character to the standard output, and optionally writing a space character if the previous character was a space. If there is a width specified, the function adjusts the index  *ind  to skip the unknown format specifier and returns 1. 
- 
-9. Finally, the function returns the number of characters printed, which is stored in the  printed_chars  variable. 
- 
-In summary, the  handle_print  function is responsible for printing an argument based on its type. It iterates through the format specifiers in the  fmt_types  array, finds a match for the current format specifier, and calls the corresponding print function. If the format specifier is unknown, it handles it accordingly. The function returns the number of characters printed or -1 if the format string has reached its end.
+The  `print_percent`  function is used for printing a percent symbol. It takes a variable argument list  `l`  and a pointer to a struct  `flags_t`  as arguments. It simply prints the percent symbol and returns the number of characters printed.
 
-# utils
+# print_bases
 
-1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
- 
-2. The function  is_printable  takes a character  c  as input and evaluates whether it is a printable character. It checks if the ASCII value of  c  is within the range of printable characters (32 to 126). If  c  is printable, the function returns 1; otherwise, it returns 0. 
- 
-3. The function  append_hexa_code  appends the ASCII value of a character in hexadecimal format to a buffer array. It takes the buffer array, the starting index  i , and the ASCII code as input. The function converts the ASCII code to its hexadecimal representation and appends it to the buffer array. The function returns the number of characters appended, which is always 3. 
- 
-4. The function  is_digit  takes a character  c  as input and checks if it is a digit. It does this by comparing the ASCII value of  c  with the ASCII values of '0' to '9'. If  c  is a digit, the function returns 1; otherwise, it returns 0. 
- 
-5. The function  convert_size_number  casts a number  num  to the specified size indicated by the  size  parameter. It takes a long integer  num  and an integer  size  as input. If  size  is  S_LONG , the function returns  num  as a long integer. If  size  is  S_SHORT , the function returns  num  as a short integer. Otherwise, the function returns  num  as an integer. 
- 
-6. The function  convert_size_unsgnd  casts an unsigned number  num  to the specified size indicated by the  size  parameter. It takes an unsigned long integer  num  and an integer  size  as input. If  size  is  S_LONG , the function returns  num  as an unsigned long integer. If  size  is  S_SHORT , the function returns  num  as an unsigned short integer. Otherwise, the function returns  num  as an unsigned integer
+This code defines several functions related to printing numbers in different bases.
 
-# _printf
+The  `print_hex`  function is used for printing a number in hexadecimal base, in lowercase. It takes a variable argument list  `l`  and a pointer to a struct  `flags_t`  as arguments. It retrieves an unsigned integer from the variable argument list using  `va_arg` . It then converts the number to a hexadecimal string representation using the  `convert`  function. If the  `hash`  flag is set and the string representation does not start with '0', it prints "0x" to indicate that it is a hexadecimal number. Finally, it prints the hexadecimal string and returns the number of characters printed.
 
-1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
- 
-2. The function  print_buffer  is declared. It takes an array of characters  buffer  and a pointer to an integer  buff_ind  as parameters. This function is responsible for printing the contents of the buffer if it exists. 
- 
-3. The function  _printf  is defined. It takes a format string  format  and a variable number of arguments using the ellipsis notation. 
- 
-4. Several variables are declared:  i ,  printed ,  printed_chars ,  flags ,  width ,  precision ,  size , and  buff_ind . The  buff_ind  variable represents the current index in the buffer. 
- 
-5. The function checks if the  format  string is  NULL . If it is, the function returns -1. 
- 
-6. The  va_start  macro is used to initialize the  list  variable for accessing the variable arguments. 
- 
-7. The function enters a loop that iterates through the characters of the  format  string. 
- 
-8. If the current character is not '%', it means it is a regular character to be printed. The character is added to the buffer, and the  buff_ind  is incremented. If the buffer is full (reaches  BUFF_SIZE ), the  print_buffer  function is called to print the contents of the buffer, and  buff_ind  is reset to 0. The  printed_chars  variable is incremented. 
- 
-9. If the current character is '%', it means it is a format specifier. The  print_buffer  function is called to print the contents of the buffer. The  get_flags ,  get_width ,  get_precision , and  get_size  functions are called to retrieve the flags, width, precision, and size for the format specifier. The index  i  is incremented to skip the format specifier character. 
- 
-10. The  handle_print  function is called to handle the printing of the argument based on its type. The result of the  handle_print  function is stored in the  printed  variable. 
- 
-11. If the  printed  variable is -1, it means there was an error in handling the format specifier. In this case, the function returns -1. 
- 
-12. The  printed_chars  variable is incremented by the value of  printed , which represents the number of characters printed. 
- 
-13. After the loop, the  print_buffer  function is called again to print any remaining contents in the buffer. 
- 
-14. The  va_end  macro is used to clean up the variable arguments. 
- 
-15. The function returns the total number of characters printed, stored in the  printed_chars  variable. 
- 
-In summary, the  _printf  function is a custom implementation of the  printf  function. It iterates through the format string, handles regular characters by adding them to a buffer, and handles format specifiers by calling the appropriate functions to retrieve the necessary information and printing the argument. The function uses a buffer to optimize the printing process and returns the total number of characters printed.
+The  `print_hex_big`  function is similar to  `print_hex` , but it prints the hexadecimal number in uppercase. It follows the same steps as  `print_hex` , but it uses the  `convert`  function with the  `lower`  argument set to 0 to convert the number to uppercase hexadecimal.
+
+The  `print_binary`  function is used for printing a number in binary base. It takes a variable argument list  `l`  and a pointer to a struct  `flags_t`  as arguments. It retrieves an unsigned integer from the variable argument list using  `va_arg` . It then converts the number to a binary string representation using the  `convert`  function with the base argument set to 2. It simply prints the binary string and returns the number of characters printed.
+
+The  `print_octal`  function is used for printing a number in octal base. It takes a variable argument list  `l`  and a pointer to a struct  `flags_t`  as arguments. It retrieves an unsigned integer from the variable argument list using  `va_arg` . It then converts the number to an octal string representation using the  `convert`  function with the base argument set to 8. If the  `hash`  flag is set and the string representation does not start with '0', it prints a single '0' to indicate that it is an octal number. Finally, it prints the octal string and returns the number of characters printed.
+
+# print_alpha
+
+This code defines two functions related to printing characters and strings.
+
+The  `print_string`  function is used for printing a string. It takes a variable argument list  `l`  and a pointer to a struct  `flags_t`  as arguments. It retrieves a string from the variable argument list using  `va_arg` . If the string is  `NULL` , it assigns  `"(null)"`  to the string. It then calls the  `_puts`  function to print the string and returns the number of characters printed.
+
+The  `print_char`  function is used for printing a character. It takes a variable argument list  `l`  and a pointer to a struct  `flags_t`  as arguments. It retrieves a character from the variable argument list using  `va_arg`  and calls the  `_putchar`  function to print the character. It returns  `1`  to indicate that one character has been printed.
+
+# print_address
+
+This code defines a function  `print_address`  that is used to print the address of a variable in hexadecimal format.
+
+The function takes a variable argument list  `l`  and a pointer to a struct  `flags_t`  as arguments. It retrieves an unsigned long integer from the variable argument list using  `va_arg` .
+
+If the value of the integer is zero (null), the function prints  `"(nil)"`  and returns the number of characters printed.
+
+Otherwise, the function converts the integer to a hexadecimal string representation using the  `convert`  function with the base argument set to 16. It then prints  `"0x"`  to indicate that it is a hexadecimal address, followed by the hexadecimal string.
+
+Finally, the function returns the total number of characters printed.
+
+# converter
+
+This code defines a function  `convert`  that is used to convert a number into a string representation in a specified base.
+
+The function takes three arguments:  `num`  (the input number to be converted),  `base`  (the base in which the number should be converted), and  `lowercase`  (a flag indicating whether the hexadecimal values should be lowercase or uppercase).
+
+The function starts by declaring a static character pointer  `rep`  and a static character array  `buffer`  of size 50.  `rep`  is set to a string representation of the digits in the specified base, either lowercase or uppercase based on the  `lowercase`  flag.
+
+A pointer  `ptr`  is then declared and initialized to point to the last element of the  `buffer`  array. The last element is set to the null character to terminate the string.
+
+The function enters a loop where it repeatedly divides the  `num`  by the  `base`  and uses the remainder to index into the  `rep`  string. The character at the corresponding index is then placed in the  `buffer`  array using the  `ptr`  pointer. The  `ptr`  is decremented to point to the previous element in the  `buffer`  array.
+
+The loop continues until the  `num`  becomes zero. At this point, the  `ptr`  will be pointing to the first element of the converted string.
+
+Finally, the function returns the  `ptr` , which now points to the string representation of the converted number.
+
+# get_flag
+
+This code defines a function  `get_flag`  that is used to turn on flags in a struct based on a flag specifier found in the format string of the  `_printf`  function.
+
+The function takes two arguments:  `s`  (a character that holds the flag specifier) and  `f`  (a pointer to the struct  `flags_t`  in which the flags are turned on).
+
+The function uses a  `switch`  statement to check the value of  `s`  and perform different actions based on its value.
+
+- If  `s`  is  `'+'` , the function sets the  `plus`  flag in the  `flags_t`  struct to 1 and assigns 1 to the variable  `i` .
+- If  `s`  is  `' '` , the function sets the  `space`  flag in the  `flags_t`  struct to 1 and assigns 1 to the variable  `i` .
+- If  `s`  is  `'#'` , the function sets the  `hash`  flag in the  `flags_t`  struct to 1 and assigns 1 to the variable  `i` .
+
+Finally, the function returns the value of  `i` , which indicates whether a flag has been turned on (1) or not (0).
+
+# get_print
+
+This code defines a function  `get_print`  that is used to select the appropriate printing function based on the conversion specifier passed to the  `_printf`  function.
+
+The function takes a character  `s`  as an argument, which holds the conversion specifier.
+
+It declares an array of structs  `func_arr`  named  `ph` , which consists of characters representing the conversion specifiers and function pointers to the corresponding printing functions.
+
+The function then initializes the  `func_arr`  array with the appropriate conversion specifiers and their corresponding printing functions.
+
+It declares an integer variable  `flags`  and assigns the number of elements in the  `func_arr`  array to it.
+
+The function enters a loop that iterates through the  `func_arr`  array. It checks if the character  `s`  matches the conversion specifier in each struct. If a match is found, it returns the corresponding printing function.
+
+If no match is found after looping through all the elements in the  `func_arr`  array, the function returns  `NULL`  to indicate that no appropriate printing function was found.
+
+In summary, the  `get_print`  function matches the conversion specifier passed to  `_printf`  with the appropriate printing function and returns a pointer to that function.
+
+# printf
+
+This code defines the  `_printf`  function, which is used to produce formatted output according to a given format string.
+
+The function takes a format string as its argument. It also uses the  `va_list`  type to handle variable arguments.
+
+The function initializes a pointer  `p`  to point to the beginning of the format string. It also declares a  `flags_t`  struct named  `flags`  to keep track of any flags specified in the format string.
+
+The function initializes a counter variable  `count`  to keep track of the number of characters printed.
+
+It starts by checking if the format string is  `NULL`  or if it consists of only a single '%' character. In these cases, it returns -1.
+
+It then enters a loop that iterates through each character in the format string. If the current character is '%', it checks if the next character is also '%'. If it is, it simply prints a '%' character and continues to the next iteration of the loop.
+
+If the next character is not '%', it checks for any flags that may be specified after the '%'. It calls the  `get_flag`  function to turn on the appropriate flags in the  `flags`  struct.
+
+It then calls the  `get_print`  function to determine the appropriate printing function based on the conversion specifier. It passes the  `va_list`  and  `flags`  struct as arguments to the printing function, and adds the return value of the printing function to the  `count`  variable.
+
+If the current character is not '%', it simply prints the character using the  `_putchar`  function and increments the  `count`  variable.
+
+After the loop ends, the function calls  `_putchar`  with the argument  `-1`  to flush any remaining characters in the buffer.
+
+Finally, it ends by cleaning up the  `va_list`  and returns the total count of characters printed.
 
 # Authors
 
-Ben Vilakazi - xolanithegeengubane@gmail.com
-Archford Chipadza - archie986jr@gmail.com
+Ben Vilakazi
+Archford Chipadza
