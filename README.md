@@ -129,3 +129,27 @@ In summary, the  get_precision  function calculates the precision for printing b
 10. Finally, the function returns the calculated  size . 
  
 In summary, the  get_size  function calculates the size to cast the argument based on the provided format string. It checks the characters following the current position in the format string and determines the size based on the presence of 'l' or 'h'. The function returns the calculated size value, which can be  S_LONG ,  S_SHORT , or 0 if no specific size is specified
+
+# print_width
+
+1. The code includes the "main.h" header file, which likely contains necessary declarations and definitions for the code to work. 
+ 
+2. The function  get_width  takes three parameters:  format , which is the formatted string in which to print the arguments,  i , which is a pointer to an integer, and  list , which is a list of arguments. 
+ 
+3. The function calculates and returns the width for printing based on the provided format string. 
+ 
+4. Inside the function, there are several variables declared:  curr_i  and  width  of type  int . 
+ 
+5. The function uses a loop to iterate through the characters of the  format  string, starting from the position after the current value of  *i . 
+ 
+6. Inside the loop, the function checks if the current character is a digit using the  is_digit  function. If it is, the function updates the value of  width  by multiplying it by 10 and adding the numerical value of the current digit. 
+ 
+7. If the current character is an asterisk ('*'), the function increments  curr_i  to skip the asterisk character and retrieves the width value from the  list  using  va_arg . It then breaks out of the loop. 
+ 
+8. If the current character is neither a digit nor an asterisk, the function breaks out of the loop. 
+ 
+9. Finally, the value of  curr_i - 1  is assigned to  *i . This updates the value of  i  to the current position in the  format  string. 
+ 
+10. The function returns the calculated  width . 
+ 
+In summary, the  get_width  function calculates the width for printing based on the provided format string. It iterates through the characters after the current position in the format string and determines the width value. The width can be either a specified numerical value or retrieved from the argument list using an asterisk. The function returns the calculated width value.
