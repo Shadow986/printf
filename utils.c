@@ -57,3 +57,25 @@ buffer[i] = map_to[ascii_code % 16];
 return (3);
 
 }
+
+
+
+/**
+ * is_digit - verify if a char is a digit
+ * @c: char eval
+ * Return: 1 if c is a digit, else 0
+ */
+
+int is_digit(char c)
+
+{
+
+if (c >= '0' && c <= '9')
+
+return (1);
+
+
+
+return (0);
+
+}
