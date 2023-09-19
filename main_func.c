@@ -64,3 +64,24 @@ return (width);
 }
 return (write(1, str, length));
 }
+/**
+ * print_percent - print %
+ * @types: lista args
+ * @buffer: buffer arr
+ * @flags:  calc flags
+ * @width: width.
+ * @precision: prec specs
+ * @size: size specs
+ * Return: num of chars
+ */
+int print_percent(va_list types, char buffer[],
+int flags, int width, int precision, int size)
+{
+UNUSED(types);
+UNUSED(buffer);
+UNUSED(flags);
+UNUSED(width);
+UNUSED(precision);
+UNUSED(size);
+return (write(1, "%%", 1));
+}
