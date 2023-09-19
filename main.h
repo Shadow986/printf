@@ -16,7 +16,7 @@
 
 
 
-/* FLAGS */
+/* flags */
 
 #define F_MINUS 1
 
@@ -30,7 +30,7 @@
 
 
 
-/* SIZES */
+/* sizes */
 
 #define S_LONG 2
 
@@ -75,7 +75,7 @@ va_list list, char buffer[], int flags, int width, int precision, int size);
 
 
 
-/****************** FUNCTIONS ******************/
+/* functions */
 
 
 
@@ -201,7 +201,7 @@ int flags, int width, int precision, int size);
 
 
 
-/****************** UTILS ******************/
+/*utils*/
 
 int is_printable(char);
 
