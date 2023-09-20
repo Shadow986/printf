@@ -1,4 +1,4 @@
-# printf_proto-type
+# _printf
 improved printf function
 
 # Write_func
@@ -143,5 +143,6 @@ Finally, it ends by cleaning up the  `va_list`  and returns the total count of c
 
 # Authors
 
-Ben Vilakazi\n
+Ben Vilakazi
+
 Archford Chipadza
