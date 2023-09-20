@@ -143,5 +143,5 @@ Finally, it ends by cleaning up the  `va_list`  and returns the total count of c
 
 # Authors
 
-Ben Vilakazi
+Ben Vilakazi\n
 Archford Chipadza
